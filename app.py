@@ -1,19 +1,27 @@
 import time
 import redis
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-app=Flask(__name__)
+app = Flask(__name__)
 cache = redis.Redis(host='redis', port=6379)
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+"""
+
+@app.route('/')
+def hello():
+    return render_template('index.html')
 
 @app.route('/',methods=['GET'])
 def Sentence_print():
     sentence = request.args.get('Sentence')
     sentence = sentence.strip('-"][').replace('-',' ').split('.')
     return "Your sentence is : {}".format(sentence)
-"""
+
     obj = SentimentIntensityAnalyzer()
     sentiment=obj.polarity_scores(sentence)
 
@@ -30,7 +38,4 @@ def Sentence_print():
         print("The sentiment is Neutral")
 """
 
-if __name__ == '__main__':
-    # run app in debug mode on port 5000
-    app.run(debug=True, port=5000)
 
