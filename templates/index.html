@@ -1,36 +1,77 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Project Data Eng</title>
-    </head>
-    <body>
-        <h1>Enter your sentence</h1>
-        <form method="POST">
-            <textarea name="text"></textarea><br><br>
-            <input type="submit">
-        </form>
-        {% if final %}
-        <div>
-            <h2>The score of this text</h2> 
-            <h2>The Sentiment of P</h2>{{ finalP }}%
-            <h2>The Sentiment of Neu</h2>{{ finalNeu }}%
-            <h2>The Sentiment of Neg</h2>{{ finalNeg }}%           
-            <h2>The Sentiment of</h2> '{{ text }}' <h2>is {{ final }}%</h2> 
-            {% if compound >= 0.05 %}
-            <div>
-                Positive
-            </div>
-            {% elif compound <= 0.05 %}
-            <div>
-                Negative
-            </div>
-            {% else %}
-            <div>
-                Neutre
-            </div>
-            {% endif %}
-            <p></p>
-        {% endif %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Data Eng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/css.css') }}">
+
+
+</head>
+<body>
+
+
+<div class="form-Bg">
+       
+    <div class="form-header">
+        <h1>Sentiment Analysis</h1>
+		<p>Application determining whether a piece of writing is positive, negative or neutral</p>
+		<BR><BR><BR><BR>
+        <h2>Enter your sentence</h2>
+        
+    </div>
+    
+    <form method="POST">
+		<div class="form-group">
+			 <input name="text" type="text" required="required"/>
+		</div>
+		<br><br>
+
+        <div class="form-group">
+            <button type="submit">Send</button>
         </div>
-    </body>
+    </form> 
+</div>
+
+{% if final %}
+<div>
+	<h2>The score of this text</h2> 
+	<h2>The Sentiment of P</h2>{{ finalP }}%
+	<h2>The Sentiment of Neu</h2>{{ finalNeu }}%
+	<h2>The Sentiment of Neg</h2>{{ finalNeg }}%           
+	<h2>The Sentiment of</h2> '{{ text }}' <h2>is {{ final }}%</h2> 
+	{% if compound >= 0.05 %}
+	<div>
+		Positive
+	</div>
+	{% elif compound <= 0.05 %}
+	<div>
+		Negative
+	</div>
+	{% else %}
+	<div>
+		Neutre
+	</div>
+	{% endif %}
+	<p></p>
+{% endif %}
+</div>
+    
+<div class="animation-area">
+	<ul class="box-area">
+		<li class="fa fa-plus"></li>
+		<li></li>  
+		<li class="fa fa-plus"></li>
+		<li></li>
+		<li class="fa fa-plus"></li>
+		<li></li>
+		<li class="fa fa-plus"></li>
+		<li></li>
+		<li class="fa fa-plus"></li>
+		<li></li>
+	</ul>
+</div>
+
+</body>
 </html>
