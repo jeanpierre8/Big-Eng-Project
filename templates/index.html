@@ -12,13 +12,25 @@
         {% if final %}
         <div>
             <h2>The score of this text</h2> 
-            <h2>The Sentiment of</h2>{{ finalP }}%
-            <h2>The Sentiment of</h2>{{ finalNeu }}%
-            <h2>The Sentiment of</h2>{{ finalNeg }}%           
-            <h2>The Sentiment of</h2> '{{ text }}' <h2>is {{ final }}%</h2>
+            <h2>The Sentiment of P</h2>{{ finalP }}%
+            <h2>The Sentiment of Neu</h2>{{ finalNeu }}%
+            <h2>The Sentiment of Neg</h2>{{ finalNeg }}%           
+            <h2>The Sentiment of</h2> '{{ text }}' <h2>is {{ final }}%</h2> 
+            {% if compound >= 0.05 %}
+            <div>
+                Positive
+            </div>
+            {% elif compound <= 0.05 %}
+            <div>
+                Negative
+            </div>
             {% else %}
-            <p></p>
+            <div>
+                Neutre
+            </div>
             {% endif %}
+            <p></p>
+        {% endif %}
         </div>
     </body>
 </html>

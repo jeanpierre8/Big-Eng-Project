@@ -1,5 +1,9 @@
 from flask import Flask, request, render_template
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from nltk.corpus import stopwords
+import nltk
+import re
+nltk.download('stopwords')
 
 app = Flask(__name__)
 
@@ -9,7 +13,10 @@ def my_form():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
+    stop_words = stopwords.words('english')
     text = request.form['text'].lower()
+    text = re.sub(r'[^\w\s]','',text)
+    text = ' '.join([x for x in text.split() if x not in stop_words])
     obj = SentimentIntensityAnalyzer()
     sentiment= obj.polarity_scores(text)
     neg = sentiment['neg']*100
@@ -17,46 +24,9 @@ def my_form_post():
     pos = sentiment['pos']*100
     compound = sentiment['compound']
     if compound >= 0.05:
-        return render_template('index.html', final=pos,finalP=neg,finalNeu=neu,finalNeg=neg, text=text)
+        return render_template('index.html', final=pos,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, compound=compound)
     elif compound <= 0.05:
-        return render_template('index.html', final=neg,finalP=neg,finalNeu=neu,finalNeg=neg, text=text)
+        return render_template('index.html', final=neg,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, compound=compound)
     else:
-        return render_template('index.html', final=neu,finalP=neg,finalNeu=neu,finalNeg=neg, text=text)
+        return render_template('index.html', final=neu,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, compound=compound)
 
-"""
-import redis
-from flask import Flask, render_template
-from flask import request
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
-app = Flask(__name__)
-cache = redis.Redis(host='redis', port=6379)
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-@app.route('/')
-def hello():
-    return render_template('index.html')
-
-@app.route('/',methods=['GET'])
-def Sentence_print():
-    sentence = request.args.get('Sentence')
-    sentence = sentence.strip('-"][').replace('-',' ').split('.')
-    return "Your sentence is : {}".format(sentence)
-
-    obj = SentimentIntensityAnalyzer()
-    sentiment=obj.polarity_scores(sentence)
-
-    return ("sentence was rated as ", sentiment['neg']*100, "% Negative")
-
-    print("sentence was rated as ", sentiment['neu']*100, "% Neutral")
-    print("sentence was rated as ", sentiment['pos']*100, "% Positive")
-    print("")
-    if sentiment['compound']>=0.05:
-        print("The sentiment is Positive")
-    elif sentiment['compound']<= 0.05:
-        print("The sentiment is Negative")
-    else:
-        print("The sentiment is Neutral")
-"""
