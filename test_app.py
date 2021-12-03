@@ -1,6 +1,7 @@
 import pytest
 import requests
 import json
+import app
 
 
 # web_interface => tests unitaires
