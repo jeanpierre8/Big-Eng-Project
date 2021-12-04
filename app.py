@@ -21,8 +21,11 @@ def my_form_post():
     obj = SentimentIntensityAnalyzer()
     sentiment= obj.polarity_scores(text)
     neg = sentiment['neg']*100
+    neg = "{:.2f}".format(neg)
     neu = sentiment['neu']*100
+    neu = "{:.2f}".format(neu)
     pos = sentiment['pos']*100
+    pos = "{:.2f}".format(pos)
     compound = sentiment['compound']
     if compound >= 0.05:
         return render_template('index.html', final=pos,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, text_no_processing=text_no_processing, compound=compound)
