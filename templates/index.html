@@ -34,22 +34,22 @@
 </div>
 
 {% if final %}
-<div>
-	<h2>The score of this text</h2> 
-	<h2>Score of Positive: {{ finalP }}%</h2>
-	<h2>Score of Neutral: {{ finalNeu }}%</h2>
-	<h2>Score of Negative: {{ finalNeg }}%</h2>
+<div class="form-header">
+	<h1>The score of this text</h1><br>
+	<p>Score of Positive: {{ finalP }}%</p>
+	<p>Score of Neutral: {{ finalNeu }}%</p>
+	<p>Score of Negative: {{ finalNeg }}%</p>
 	{% if compound >= 0.05 %}
 	<div>
-	<h2>The Sentiment of :</h2> '{{ text_no_processing }}' <h2>is {{ final }}% Positive !</h2>	
+	<h2>The Sentiment of :</h2> <p>'{{ text_no_processing }}' </p><h2>is {{ final }}% Positive !</h2>	
 	</div>
 	{% elif compound <= -0.05 %}
 	<div>
-	<h2>The Sentiment of :</h2> '{{ text_no_processing }}' <h2>is {{ final }}% Negative !</h2>	
+	<h2>The Sentiment of :</h2><p> '{{ text_no_processing }}' </p><h2>is {{ final }}% Negative !</h2>	
 	</div>
 	{% else %}
 	<div>
-	<h2>The Sentiment of :</h2> '{{ text_no_processing }}' <h2>is {{ final }}% Neutral !</h2>	
+	<h1>The Sentiment of :</h1><p> '{{ text_no_processing }}' </p><h1>is {{ final }}% Neutral !</h1>	
 	</div>
 	{% endif %}
 	</tr>
@@ -73,3 +73,4 @@
 
 </body>
 </html>
+
