@@ -3,6 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 import nltk
 import re
+
 nltk.download('stopwords')
 
 app = Flask(__name__)
@@ -34,3 +35,23 @@ def my_form_post():
     else:
         return render_template('index.html', final=neu,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, text_no_processing=text_no_processing, compound=compound)
 
+"""
+@app.route('/Ml_model')
+def index():
+    df = pd.read_csv('moviereviews.tsv', sep ='\t')
+    df_table = df.head()
+    df.dropna(inplace=True)
+    blanks = []
+    for i,lb,rv in df.itertuples():
+        if type(rv)==str:
+            if rv.isspace():
+                blanks.append(1)
+    df.drop(blanks, inplace=True)
+    analyser = SentimentIntensityAnalyzer()
+    df['scores']= df['review'].apply(lambda review: analyser.polarity_scores(review))
+    df['compound']= df['scores'].apply(lambda score: score['compound'])
+    df['com_score']= df['compound'].apply(lambda c: 'pos' if c >=0 else 'neg')
+    accuracy_score = accuracy_score(df['label'],df['com_score'])
+    return render_template('model.html', accuracy_score=accuracy_score)
+
+"""
