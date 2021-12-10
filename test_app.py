@@ -35,3 +35,4 @@ def test_accuracy_text_lower():
 
 def test_accuracy_text_pounctuation():
     assert text['compound'] < text3['compound'] < text4['compound']
+

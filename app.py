@@ -1,10 +1,10 @@
 from flask import Flask, request, render_template
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from nltk.corpus import stopwords
-import nltk
-import re
+#from nltk.corpus import stopwords
+#import nltk
+#import re
 
-nltk.download('stopwords')
+#nltk.download('stopwords')
 
 app = Flask(__name__)
 
@@ -14,11 +14,7 @@ def my_form():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    stop_words = stopwords.words('english')
-    text = request.form['text'].lower()
-    text_no_processing = request.form['text'].lower()
-    text = re.sub(r'[^\w\s]','',text)
-    text = ' '.join([x for x in text.split() if x not in stop_words])
+    text = request.form['text']
     obj = SentimentIntensityAnalyzer()
     sentiment= obj.polarity_scores(text)
     neg = sentiment['neg']*100
@@ -29,13 +25,22 @@ def my_form_post():
     pos = "{:.2f}".format(pos)
     compound = sentiment['compound']
     if compound >= 0.05:
-        return render_template('index.html', final=pos,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, text_no_processing=text_no_processing, compound=compound)
+        return render_template('index.html', final=pos,finalP=pos,finalNeu=neu,finalNeg=neg, text=text,compound=compound)
     elif compound <= -0.05:
-        return render_template('index.html', final=neg,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, text_no_processing=text_no_processing, compound=compound)
+        return render_template('index.html', final=neg,finalP=pos,finalNeu=neu,finalNeg=neg, text=text,compound=compound)
     else:
-        return render_template('index.html', final=neu,finalP=pos,finalNeu=neu,finalNeg=neg, text=text, text_no_processing=text_no_processing, compound=compound)
+        return render_template('index.html', final=neu,finalP=pos,finalNeu=neu,finalNeg=neg, text=text,compound=compound)
 
 """
+    stop_words = stopwords.words('english')
+    text = request.form['text'].lower()
+    text_no_processing = request.form['text'].lower()
+    text = re.sub(r'[^\w\s]','',text)
+    text = ' '.join([x for x in text.split() if x not in stop_words])
+
+
+
+
 @app.route('/Ml_model')
 def index():
     df = pd.read_csv('moviereviews.tsv', sep ='\t')
