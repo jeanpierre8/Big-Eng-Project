@@ -56,9 +56,15 @@ The requirements of the application:
     flask
     vaderSentiment
 
+
 ## Project Management:
 ## Jira
     https://efrei22.atlassian.net/jira/software/projects/DEP/boards/1
 
+We have four main parts to do:
 
+    The Ml Model
+    The Web interface
+    The Application Package
+    the Testing
 
