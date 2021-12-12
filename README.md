@@ -19,8 +19,10 @@ Vader api was used in the model.
 The application should have a web interface with an input form and a submit button, where users can input their sentences, and hit submit, and the sentiment of their sentence will be presented.
 <br/><br/>
 Image of the application:
+<img src="https://github.com/jeanpierre8/Big-Eng-Project/blob/main/index.PNG"/>
 <br/><br/>
 the output of the application:
+<img src="https://github.com/jeanpierre8/Big-Eng-Project/blob/main/output.PNG"/>
 ## Project Management:
 ## Jira
     https://efrei22.atlassian.net/jira/software/projects/DEP/boards/1
