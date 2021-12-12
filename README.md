@@ -24,6 +24,38 @@ The image of the application:
 The output of the application:
 <img src="https://github.com/jeanpierre8/Big-Eng-Project/blob/main/output.PNG"/>
 <br/><br/>
+
+The docker installation in linux:
+
+    sudo apt install docker.io
+    docker --version
+
+The docker-compose installation in linux:
+
+    sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    docker-compose --version
+
+The docker-compose start and down:
+
+    sudo docker-compose up
+    sudo docker-compose down
+    sudo docker image rm -f big-eng-project_web
+
+The docker images:
+
+    sudo docker images
+
+    REPOSITORY            TAG       IMAGE ID       CREATED          SIZE
+    big-eng-project_web   latest    e1b0e9aedeee   18 minutes ago   935MB
+    python                3.8       f746089c9d02   9 days ago       909MB
+
+The requirements of the application:
+
+    flask
+    vaderSentiment
+
 ## Project Management:
 ## Jira
     https://efrei22.atlassian.net/jira/software/projects/DEP/boards/1
