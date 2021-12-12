@@ -25,12 +25,12 @@ The output of the application:
 <img src="https://github.com/jeanpierre8/Big-Eng-Project/blob/main/output.PNG"/>
 <br/><br/>
 
-The docker installation in linux:
+The docker installation on linux:
 
     sudo apt install docker.io
     docker --version
 
-The docker-compose installation in linux:
+The docker-compose installation on linux:
 
     sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
@@ -68,3 +68,24 @@ We have four main parts to do:
     The Application Package
     the Testing
 
+## Step of the project:
+
+First, we need a base to start the project, we base on the python website, using flask, <br/>
+that calculates the mean of GET requests containing a list of numbers of the classes.<br/>
+We change it for have the input of the user of POST requests with a form.
+
+<br/>
+
+Second, we increment the Ml model VaderSentiment to analyse the input of the user, and detected the sentiment is either positive, negative or neutral.
+
+<br/>
+
+Third, we do the html and css of the Web interface.
+
+<br/>
+
+Finally, we do units tests.
+
+<br/>
+
+## Tests:
