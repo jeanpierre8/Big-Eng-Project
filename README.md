@@ -89,3 +89,39 @@ Finally, we do units tests.
 <br/>
 
 ## Tests:
+
+The pytest installation:
+
+    sudo apt-get install -y python-pytest
+    pytest --version
+
+The list of Python Libraries to launch pytest for the application:
+
+    numpy
+    pandas
+    nlkt
+    sklearn
+    bs4
+    flask
+    pickle
+
+### Test_app.py
+
+Test of the application:
+
+    accuracy of the analyse
+    accuracy of Vader model
+    test stress
+    working test
+
+### Test_interface.py
+
+Test of the interface:
+
+    working test
+
+### Test_model.py
+
+Test of our custom Model:
+
+    compare the accuracy of Vader model and the accuracy of our custom model
