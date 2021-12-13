@@ -74,7 +74,7 @@ text3 = analyser.polarity_scores(sentence3)
 text4 = analyser.polarity_scores(sentence4)
 
 def test_accuracy_text_lower():
-    assert text['compound'] > text2['compound']
+    assert text['compound'] < text2['compound']
 
 def test_accuracy_text_pounctuation():
     assert text['compound'] < text3['compound'] < text4['compound']
