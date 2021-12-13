@@ -45,15 +45,15 @@ p {
 	<p>Score of Negative: {{ finalNeg }}%</p>
 	{% if compound >= 0.05 %}
 	<div>
-	<h2>The Sentiment of :</h2> <p>'{{ text}}' </p><h2>is {{ final }}% Positive !</h2>	
+	<h2>The Sentiment of :</h2> <p >'{{ text}}' </p><h2>is <p id="pos" >{{ final }}</p>% Positive !</h2>	
 	</div>
 	{% elif compound <= -0.05 %}
 	<div>
-	<h2>The Sentiment of :</h2><p> '{{ text }}' </p><h2>is {{ final }}% Negative !</h2>	
+	<h2>The Sentiment of :</h2><p > '{{ text }}' </p><h2>is <p id="neg" >{{ final }}</p>% Negative !</h2>	
 	</div>
 	{% else %}
 	<div>
-	<h1>The Sentiment of :</h1><p> '{{ text }}' </p><h1>is {{ final }}% Neutral !</h1>	
+	<h1>The Sentiment of :</h1><p > '{{ text }}' </p><h1>is <p id="neut" >{{ final }}</p>% Neutral !</h1>	
 	</div>
 	{% endif %}
 	</tr>
